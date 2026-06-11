@@ -26,7 +26,7 @@ def time_deco(func):
         start_time = time.time()
         result = func(*args, **kwargs)
         end_time = time.time()
-        print(f"Wykonano funkcję: {func} w {end_time - start_time}")
+        print(f"Wykonano funkcję: {func.__name__} w {end_time - start_time:.6f}")
         return result
     return wrapper
 
@@ -35,11 +35,14 @@ def greedy(items, max_capacity):
     items.sort(key=lambda itemlam: itemlam[2]/itemlam[1], reverse=True)
     current_capacity = 0
     current_value = 0
+    final_items = []
     for item in items:
         if current_capacity + item[1] <= max_capacity:
             current_capacity += item[1]
             current_value += item[2]
-            print(f"Włożono {item[0]}, Aktualna waga: {current_capacity}, Aktualna wartość: {current_value}")
+            final_items.append([item[0], item[1], item[2]])
+            #print(f"Włożono {item[0]}, Aktualna waga: {current_capacity}, Aktualna wartość: {current_value}")
+    print(f"Wynik zachłanny: Przedmioty: {final_items}, Łączna wartość: {current_value}")
 
 @time_deco
 def brute_force(items, max_capacity):
@@ -64,5 +67,14 @@ def brute_force(items, max_capacity):
         if combo_weight <= max_capacity and combo_value > max_value:
             max_value = combo_value
             max_val_items = combo
-    print(f"Najlepsze kombo: {max_val_items}, Wartość: {max_value}")
+    print(f"Wynik siłowy: Przedmioty:  {max_val_items}, Łączna wartość: {max_value}")
+
+if __name__ == "__main__":
+    my_filename = input("Podaj nazwe pliku: ")
+    items = load_file(my_filename)
+    my_capacity = int(input("Podaj max pojemnosc plecaka: "))
+    print("Wypisywane wyniki- Nazwa, Waga, Wartość\n")
+    greedy(items, my_capacity)
+    print("\n")
+    brute_force(items, my_capacity)
 
