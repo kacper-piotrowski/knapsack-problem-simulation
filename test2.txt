@@ -1,0 +1,3 @@
+Diament;6;30
+Srebro;5;20
+Miedz;5;20

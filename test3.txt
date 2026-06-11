@@ -1,0 +1,15 @@
+Przedmiot1;4;10
+Przedmiot2;5;12
+Przedmiot3;7;15
+Przedmiot4;3;8
+Przedmiot5;2;5
+Przedmiot6;6;14
+Przedmiot7;8;20
+Przedmiot8;5;11
+Przedmiot9;4;9
+Przedmiot10;9;25
+Przedmiot11;3;7
+Przedmiot12;5;13
+Przedmiot13;7;18
+Przedmiot14;2;6
+Przedmiot15;6;16

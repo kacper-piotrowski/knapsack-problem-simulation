@@ -1,0 +1,3 @@
+Zegarek;2;10
+Aparat;3;12
+Laptop;5;15

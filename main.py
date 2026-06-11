@@ -75,7 +75,7 @@ if __name__ == "__main__":
     my_filename = input("Podaj nazwe pliku: ")
     items = load_file(my_filename)
     my_capacity = int(input("Podaj max pojemnosc plecaka: "))
-    print("Wypisywane wyniki- Nazwa, Waga, Wartość\n")
+    print("\nWypisywane wyniki- Nazwa, Waga, Wartość\n")
     greedy_result, greedy_time = greedy(items, my_capacity)
     print("\n")
     brute_result, brute_time = brute_force(items, my_capacity)
