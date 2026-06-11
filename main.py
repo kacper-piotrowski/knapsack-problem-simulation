@@ -1,4 +1,7 @@
+import functools
 import sys
+import time
+
 
 def load_file(filename):
     try:
@@ -17,6 +20,17 @@ def load_file(filename):
     except FileNotFoundError:
         sys.exit("Nie znaleziono pliku")
 
+def time_deco(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"Wykonano funkcję: {func} w {end_time - start_time}")
+        return result
+    return wrapper
+
+@time_deco
 def greedy(items, max_capacity):
     items.sort(key=lambda itemlam: itemlam[2]/itemlam[1], reverse=True)
     current_capacity = 0
@@ -27,6 +41,7 @@ def greedy(items, max_capacity):
             current_value += item[2]
             print(f"Włożono {item[0]}, Aktualna waga: {current_capacity}, Aktualna wartość: {current_value}")
 
+@time_deco
 def brute_force(items, max_capacity):
     combos=[[]]
     for item in items:
@@ -50,3 +65,4 @@ def brute_force(items, max_capacity):
             max_value = combo_value
             max_val_items = combo
     print(f"Najlepsze kombo: {max_val_items}, Wartość: {max_value}")
+
